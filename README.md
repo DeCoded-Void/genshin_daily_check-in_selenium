@@ -27,7 +27,7 @@ To:
     #time.sleep(60) #get some time to log in (60 seconds)
     #get_cookies()
 ```
-Now when script is executed it will use **cookies.pkl** to log in.
+Now when script is executed it will use **cookies.pkl** to log in.  
 Add the script to Windows scheduler and... that's all!
 
 # Additional option
