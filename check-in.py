@@ -21,10 +21,6 @@ def import_cookies():
 def get_cookies():
     pickle.dump(driver.get_cookies(), open("{0}//cookies.pkl".format(cwd), "wb"))
 
-def reload_browser():
-    driver.get('https://webstatic-sea.mihoyo.com'
-               '/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us')
-
 def check_logon():
     submit = driver.find_element_by_xpath('//*[contains(@class, "---login")]')
     submit.click()
@@ -49,7 +45,7 @@ if __name__ == '__main__':
     #import_cookies()
     time.sleep(60) #get some time to log in
     get_cookies()
-    reload_browser()
+    open_browser() #to reload content
     time.sleep(5)
     check_logon()
     time.sleep(5)
