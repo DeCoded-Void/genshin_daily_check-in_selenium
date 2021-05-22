@@ -13,7 +13,7 @@ Run the script. New Firefox window will appear.
 You have 60 seconds to log in. To log in click on the avatar on top right on the website and put your credentials.  
 Wait the remaining time. Firefox will close automatically.  
 In the directory of the script, new file **cookies.pkl** will be created. Never share this file with anyone!  
-Now edit the mentioned below part of the python script.  
+Now edit the part of the python script.  
 
 From:
 ```
