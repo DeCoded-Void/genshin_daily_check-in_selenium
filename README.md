@@ -18,19 +18,19 @@ Now edit the mentioned below part of the python script.
 From:
 ```
     #import_cookies()
-    time.sleep(60) #get some time to log in (60 seconds)
+    time.sleep(60) #get some time to log in
     get_cookies()
 ```
 To:
 ```
     import_cookies()
-    #time.sleep(60) #get some time to log in (60 seconds)
+    #time.sleep(60) #get some time to log in
     #get_cookies()
 ```
 Now when script is executed it will use **cookies.pkl** to log in.  
 Add the script to Windows scheduler and... that's all!
 
-# Additional option
+# Additional options
 When everything is set and you know it is working fine you can daily check-in with headless firefox (window will not appear)
 
 Change:
@@ -43,3 +43,6 @@ And to make it completely invisible (even without cmd window), create VBS file w
 CreateObject("Wscript.Shell").Run "C:\path_to_script\daily_check-in.py",0,True
 ```
 And set scheduler to run vbs file instead of py.
+
+___
+Put the wav file with sound effect and uncomment line in the script and you will be informed about failure of checking-in the prize.
