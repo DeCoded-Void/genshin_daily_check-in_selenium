@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-import time, winsound, pickle, ctypes, sys
+import time, winsound, pickle, ctypes, sys, os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
 
+cwd = os.path.dirname(os.path.realpath(__file__))
 options = FirefoxOptions()
-options.headless = False
+options.headless = True
 gecko_logpath = 'nul'
 driver = webdriver.Firefox(options = options, executable_path = 'C:\geckodriver.exe', service_log_path = gecko_logpath)
 
@@ -13,12 +14,12 @@ def open_browser():
                '/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us')
 
 def import_cookies():
-    cookies = pickle.load(open("cookies.pkl", "rb"))
+    cookies = pickle.load(open("{0}//cookies.pkl".format(cwd), "rb"))
     for cookie in cookies:
         driver.add_cookie(cookie)
 
 def get_cookies():
-    pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+    pickle.dump(driver.get_cookies(), open("{0}//cookies.pkl".format(cwd), "wb"))
 
 def reload_browser():
     driver.get('https://webstatic-sea.mihoyo.com'
