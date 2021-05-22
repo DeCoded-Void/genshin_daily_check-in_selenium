@@ -34,7 +34,7 @@ def close_browser():
 if __name__ == '__main__':
     open_browser()
     #import_cookies()
-    time.sleep(30) #get some time to log in
+    time.sleep(60) #get some time to log in (60 seconds)
     get_cookies()
     reload_browser()
     time.sleep(5)
