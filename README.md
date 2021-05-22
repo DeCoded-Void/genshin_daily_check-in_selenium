@@ -14,22 +14,24 @@ You have 60 seconds to log in. To log in click on the avatar on top right on the
 Wait the remaining time. Firefox will close automatically.
 In the directory of the script new file **cookies.pkl** will be created. Never share this file with anyone!
 Edit the part of the python script.
+
 From:
 ```
     #import_cookies()
-    time.sleep(30) #get some time to log in
+    time.sleep(60) #get some time to log in (60 seconds)
     get_cookies()
 ```
 To:
 ```
     import_cookies()
-    #time.sleep(30) #get some time to log in
+    #time.sleep(60) #get some time to log in (60 seconds)
     #get_cookies()
 ```
 Now when script is executed it will use **cookies.pkl** to log in.
 
 # Additional option
 When everything is set and you know it is working fine you can daily check-in with headless firefox (window will not appear)
+
 Change:
 ```options.headless = False```
 to
