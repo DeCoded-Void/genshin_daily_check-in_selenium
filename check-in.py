@@ -4,7 +4,7 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
 
 options = FirefoxOptions()
-options.headless = True
+options.headless = False
 gecko_logpath = 'nul'
 driver = webdriver.Firefox(options = options, executable_path = 'C:\geckodriver.exe', service_log_path = gecko_logpath)
 
