@@ -37,3 +37,9 @@ Change:
 ```options.headless = False```
 to
 ```options.headless = True```
+
+And to make it completely invisible (even without cmd window), create VBS file which contains:
+```
+CreateObject("Wscript.Shell").Run "C:\path_to_script\daily_check-in.py",0,True
+```
+And set scheduler to run vbs file instead of py.
