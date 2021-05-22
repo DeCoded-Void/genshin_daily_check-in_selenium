@@ -7,19 +7,13 @@ Python code for Genshin Impact daily check-in web event. For Firefox web browser
 3. Official Mozilla geckodriver.exe (https://github.com/mozilla/geckodriver/releases)
 
 # Usage
-Set the path to geckodriver.exe in script (default is C:\geckodriver.exe)
-
-Now you need to get own cookie and store it locally.
-
-Run the script. New Firefox window will appear.
-
-You have 60 seconds to log in. To log in click on the avatar on top right on the website and put your credentials.
-
-Wait the remaining time. Firefox will close automatically.
-
-In the directory of the script new file **cookies.pkl** will be created. Never share this file with anyone!
-
-Edit the part of the python script.
+Set the path to geckodriver.exe in script (default is C:\geckodriver.exe).  
+Now you need to get own cookie and store it locally.  
+Run the script. New Firefox window will appear.  
+You have 60 seconds to log in. To log in click on the avatar on top right on the website and put your credentials.  
+Wait the remaining time. Firefox will close automatically.  
+In the directory of the script new file **cookies.pkl** will be created. Never share this file with anyone!  
+Edit the part of the python script.  
 
 From:
 ```
