@@ -27,7 +27,7 @@ def check_logon():
     elements = driver.find_elements_by_xpath('//*[contains(text(), "Log out")]')
     if not elements:
         # Play sound when logon fails.
-        #winsound.PlaySound("error.wav", winsound.SND_ASYNC | winsound.SND_ALIAS)
+        #winsound.PlaySound("{0}//error.wav".format(cwd), winsound.SND_ASYNC | winsound.SND_ALIAS)
         driver.quit()
         # Show popup when logon fails.
         ctypes.windll.user32.MessageBoxW(0, "You are not logged in!", "Genshin Impact daily check-in event!", 0)
