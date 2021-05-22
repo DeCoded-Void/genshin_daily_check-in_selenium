@@ -5,7 +5,7 @@ from selenium import webdriver
 
 cwd = os.path.dirname(os.path.realpath(__file__))
 options = FirefoxOptions()
-options.headless = True
+options.headless = False
 gecko_logpath = 'nul'
 driver = webdriver.Firefox(options = options, executable_path = 'C:\geckodriver.exe', service_log_path = gecko_logpath)
 
