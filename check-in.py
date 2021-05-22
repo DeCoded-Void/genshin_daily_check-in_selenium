@@ -56,5 +56,5 @@ if __name__ == '__main__':
         execute_click()
         time.sleep(5)
     except:
-        print("Already redemeed.")
+        print("Already redeemed.")
     close_browser()
