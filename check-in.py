@@ -6,7 +6,7 @@ from selenium import webdriver
 
 options = FirefoxOptions()
 options.headless = False
-driver = webdriver.Firefox(options=options, executable_path = 'C:\Programy do użytku\geckodriver.exe')
+driver = webdriver.Firefox(options=options, executable_path = 'C:\geckodriver.exe')
 
 def open_browser():
     driver.get('https://webstatic-sea.mihoyo.com'
