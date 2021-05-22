@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import time, winsound, pickle, ctypes
+import time, winsound, pickle, ctypes, sys
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
 
@@ -29,11 +29,12 @@ def check_logon():
     submit.click()
     elements = driver.find_elements_by_xpath('//*[contains(text(), "Log out")]')
     if not elements:
-        print("You are not logged in!")
-        # Sound when logon failed
+        # Play sound when logon fails.
         #winsound.PlaySound("error.wav", winsound.SND_ASYNC | winsound.SND_ALIAS)
-        # Popup when logon failed
+        driver.quit()
+        # Show popup when logon fails.
         ctypes.windll.user32.MessageBoxW(0, "You are not logged in!", "Genshin Impact daily check-in event!", 0)
+        sys.exit("You are not logged in!")
 
 def execute_click():
     submit = driver.find_element_by_xpath('//*[contains(@class, "---active")]')
