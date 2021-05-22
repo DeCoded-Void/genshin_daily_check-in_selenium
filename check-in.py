@@ -1,15 +1,11 @@
 #!/usr/bin/env python
-import os
+import time
+import pickle
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
 
-import time
-import pickle
-
-cur_dir = os.path.dirname(os.path.realpath(__file__))
-
 options = FirefoxOptions()
-options.headless = True
+options.headless = False
 driver = webdriver.Firefox(options=options, executable_path = 'C:\Programy do użytku\geckodriver.exe')
 
 def open_browser():
@@ -37,9 +33,9 @@ def close_browser():
 
 if __name__ == '__main__':
     open_browser()
-    import_cookies()
-    #time.sleep(30) #get some time to log in
-    #get_cookies()
+    #import_cookies()
+    time.sleep(30) #get some time to log in
+    get_cookies()
     reload_browser()
     time.sleep(5)
     try:
