@@ -28,6 +28,7 @@ To:
     #get_cookies()
 ```
 Now when script is executed it will use **cookies.pkl** to log in.
+Add the script to Windows scheduler and... that's all!
 
 # Additional option
 When everything is set and you know it is working fine you can daily check-in with headless firefox (window will not appear)
