@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# time for delay.
+# time for delaying the command execution.
 # windound for sound alert in case of error.
 # pickle to save and load cookies.
 # ctypes for error popup window.
