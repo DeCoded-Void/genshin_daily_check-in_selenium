@@ -5,7 +5,7 @@
 # ctypes for error popup window.
 # sys for exit text on console information.
 # os for getting the script directory path (usefull if script is executed from another directory).
-# selenium for makeing the whole automation.
+# selenium for making the whole automation.
 
 import time, winsound, pickle, ctypes, sys, os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
