@@ -1,5 +1,5 @@
 # genshin_daily_check-in_selenium
-Python code for automatic Genshin Impact daily check-in web event. For Firefox web browser.
+Python code for automatic daily check-in on Genshin Impact web event. For Firefox web browser.
 
 # Requirements
 1. Python 3.8
