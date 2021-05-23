@@ -6,6 +6,7 @@
 # sys for exit text on console information.
 # os for getting the script directory path (usefull if script is executed from another directory).
 # selenium for making the whole automation.
+# Options for enabling the headless browser and disable geckodriver logs.
 
 import time, winsound, pickle, ctypes, sys, os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
