@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # time for delaying the command execution.
 # windound for sound alert in case of error.
-# pickle to save and load cookies.
+# pickle for saveing and loading the cookies.
 # ctypes for error popup window.
 # sys for exit text on console information.
-# os to get script directory path (usefull if script is executed from another directory).
+# os for getting the script directory path (usefull if script is executed from another directory).
+# selenium for makeing the whole automation.
 
 import time, winsound, pickle, ctypes, sys, os
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
