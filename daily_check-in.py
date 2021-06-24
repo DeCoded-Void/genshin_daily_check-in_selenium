@@ -1,78 +1,63 @@
-#!/usr/bin/env python
-# time for delaying the command execution.
-# windound for sound alert in case of error.
-# pickle for saveing and loading the cookies.
-# ctypes for error popup window.
-# sys for exit text on console information.
-# os for getting the script directory path (usefull if script is executed from another directory).
-# selenium for making the whole automation.
-# Options for enabling the headless browser and disable/enable geckodriver logs.
-
-import time, winsound, pickle, ctypes, sys, os
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import ctypes
+import os
+import shutil
+import time
 from selenium import webdriver
 
-# Assign script dir path to cwd.
-cwd = os.path.dirname(os.path.realpath(__file__))
-# Options for Firefox geckodriver.
-options = FirefoxOptions()
-options.headless = False
-# You can change it to something else if you want to see geckodriver logs.
-gecko_logpath = 'nul'
-driver = webdriver.Firefox(options = options, executable_path = 'C:\geckodriver.exe', service_log_path = gecko_logpath)
+profile = "genshin"
+
+# Used options to ensure that the enviornment is in-line with an actual browser instance
+options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox')
+options.add_argument("--disable-blink-features")
+options.add_argument("--disable-blink-features=AutomationControlled")
+
+# Check if chrome profile exists, will be used later on
+newLoginFlag = False
+if os.path.isdir(profile) is False:
+    newLoginFlag = True
+    
+options.add_argument(f"--user-data-dir={os.path.dirname(os.path.realpath(__file__))}\{profile}")
+driver = webdriver.Chrome(options=options)
 
 # Open website with event.
 def open_browser():
-    driver.get('https://webstatic-sea.mihoyo.com'
-               '/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us')
+    driver.get('https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us')
 
-# Import cookies which was previously created.
-def import_cookies():
-    cookies = pickle.load(open("{0}//cookies.pkl".format(cwd), "rb"))
-    for cookie in cookies:
-        driver.add_cookie(cookie)
-
-# Cet cookie from browser (after logon) and store them as file.
-def get_cookies():
-    pickle.dump(driver.get_cookies(), open("{0}//cookies.pkl".format(cwd), "wb"))
-
-# Checking if user is logged in. If not sound or/and popup will appear.
-def check_logon():
+# Checking if user is logged in.
+def check_login():
     # Search for login icon and click it (to open submenu).
     submit = driver.find_element_by_xpath('//*[contains(@class, "---login")]')
     submit.click()
     # Checking if "Log out" option is present (if not you are not logged in).
-    elements = driver.find_elements_by_xpath('//*[contains(text(), "Log out")]')
-    if not elements:
-        # Play sound when logon fails.
-        #winsound.PlaySound("{0}//error.wav".format(cwd), winsound.SND_ASYNC | winsound.SND_ALIAS)
+    hasLogOut = driver.find_elements_by_xpath('//*[contains(text(), "Log out")]')
+    if not hasLogOut:
         driver.quit()
-        # Show popup when logon fails.
         ctypes.windll.user32.MessageBoxW(0, "You are not logged in!", "Genshin Impact daily check-in event!", 0)
-        sys.exit("You are not logged in!")
+        shutil.rmtree(profile, ignore_errors=True) # Deletes user profile
+        open('restartflag.txt', 'w').close() # Create a blank file to act as a flag for our batch file
+        quit()
 
-# When new "check-in" is present the class of the div contains "---active". So we are searching for it and click it.
+# Once there is an active daily, we so a simulated click to accept it
 def execute_click():
     submit = driver.find_element_by_xpath('//*[contains(@class, "---active")]')
     submit.click()
 
-# Closing the opened browser.
-def close_browser():
-    driver.quit()
-
 # Execution order.
 if __name__ == '__main__':
-    open_browser()
-    #import_cookies()
-    time.sleep(60) #get some time to log in
-    get_cookies()
-    open_browser() #to reload content
+    if newLoginFlag is True: # if profile doesnt exist
+        open_browser()
+        input('\n\n\nLogin Requried, opening browser, once logged in, come back to this window and press enter to continue')
+        print(f'\n\n\nContinuing with process, if you made a mistake, delete the "{profile}" folder and restart the program')
+    
+    open_browser() # to reload content
     time.sleep(5)
-    check_logon()
+    check_login()
     time.sleep(5)
     try:
         execute_click()
         time.sleep(5)
-    except:
-        print("Already redeemed.")
-    close_browser()
+        print("\n\n\nSucessfully redeemed daily! \n Gonna wait for a full 24 hours, to force a recheck, press any button to do so...")
+    except Exception as error:
+        print("\n\n\nAlready redeemed daily, gonna wait for a full 24 hours, to force a recheck, press any button to do so...")
+    driver.quit()
