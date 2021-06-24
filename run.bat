@@ -1,7 +1,7 @@
 @echo off
 title Hoyolab Daily
 
-python check-in.py
+python daily_check-in.py 
 
 :loop
 if exist restartflag.txt (
