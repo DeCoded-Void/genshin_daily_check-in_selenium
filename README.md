@@ -1,8 +1,8 @@
 # Credits
-Forked from [genshin_daily_check-in_selenium by YozenPL](https://github.com/YozenPL/genshin_daily_check-in_selenium)
+Forked from [genshin_daily_check-in_selenium by YozenPL](https://github.com/YozenPL/genshin_daily_check-in_selenium) and adapted for use with Chrome and using a different way to store data.
 
 # genshin_daily_check-in_selenium_chrome
-Python code for automatic daily check-in on [Genshin Impact web event](https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us). For the Chrome web browser.
+Python code for automatic daily check-in on [Genshin Impact web event](https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us). For the Chrome web browser. Intended for Windows-based servers or as a one-click Windows solution after account login.
 
 # Requirements
 1. Windows 8 or Higher
